@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101820">
+  <meta name="description" content="SOSDAI_SAIT — сайт жасоо 1200 сомдон. Товар каталогу, WhatsApp заказ, кыргызча-орусча сайттар.">
+  <title>SOSDAI_SAIT — Сайт жасоо</title>
+
+  <style>
+    :root {
+      --bg: #101820;
+      --card: #1a252f;
+      --green: #c6ff62;
+      --text: #f5f7fa;
+      --muted: #bcc7d0;
+      --border: #36434f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.65 Arial, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, select, input {
+      font: inherit;
+    }
+
+    a:focus-visible,
+    select:focus-visible,
+    input:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid var(--green);
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(1120px, 100% - 40px);
+      margin: auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navigation {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--green);
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      color: var(--muted);
+    }
+
+    nav a:hover {
+      color: var(--green);
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 48px;
+      padding: 12px 22px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      filter: brightness(.92);
+    }
+
+    .green {
+      background: var(--green);
+      color: var(--bg);
+      border-color: var(--green);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      align-items: center;
+      gap: 50px;
+      padding: 75px 0 55px;
+    }
+
+    .label {
+      color: var(--green);
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(38px, 5.5vw, 68px);
+      line-height: 1.12;
+      letter-spacing: -2px;
+      margin: 20px 0;
+    }
+
+    h1 span {
+      color: var(--green);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .offer {
+      padding: 30px;
+      background: var(--card);
+      border-top: 3px solid var(--green);
+      border-radius: 0 0 18px 18px;
+    }
+
+    .discount {
+      font-size: 75px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .offer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .offer-bottom strong {
+      font-size: 25px;
+    }
+
+    .benefits {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 22px 0;
+      border-block: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .benefits span::before {
+      content: "✓ ";
+      color: var(--green);
+    }
+
+    section {
+      padding: 55px 0;
+    }
+
+    h2 {
+      margin: 10px 0 18px;
+      font-size: clamp(29px, 4vw, 42px);
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      padding: 26px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+
+    .card.featured {
+      border: 2px solid var(--green);
+    }
+
+    .badge {
+      align-self: flex-start;
+      background: var(--green);
+      color: var(--bg);
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .card h3 {
+      font-size: 27px;
+      margin: 18px 0 6px;
+    }
+
+    .description {
+      color: var(--muted);
+      min-height: 55px;
+      margin: 0 0 20px;
+    }
+
+    .base {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .price {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .price small {
+      font-size: 18px;
+      font-weight: normal;
+    }
+
+    .saving {
+      color: var(--green);
+      font-size: 14px;
+    }
+
+    .features {
+      flex: 1;
+      list-style: none;
+      border-top: 1px solid var(--border);
+      margin: 20px 0 25px;
+      padding: 18px 0 0;
+    }
+
+    .features li {
+      position: relative;
+      padding: 6px 0 6px 24px;
+    }
+
+    .features li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 22px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 35px;
+    }
+
+    .service {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .service small {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .service strong {
+      color: var(--green);
+      white-space: nowrap;
+      font-size: 20px;
+    }
+
+    .calculator {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      margin-top: 40px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .calc-options {
+      background: var(--card);
+      padding: 30px;
+    }
+
+    .calculator h3 {
+      font-size: 26px;
+      margin: 0 0 20px;
+    }
+
+    select {
+      width: 100%;
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 13px;
+      margin: 8px 0 15px;
+    }
+
+    .check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 0;
+      cursor: pointer;
+    }
+
+    .check input {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      margin-top: 4px;
+      accent-color: var(--green);
+    }
+
+    .calc-result {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .calc-result p {
+      color: var(--muted);
+    }
+
+    #total {
+      color: var(--green);
+      font-size: 45px;
+      font-weight: 800;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .step-number {
+      color: var(--green);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .steps h3 {
+      font-size: 22px;
+    }
+
+    .steps p {
+      color: var(--muted);
+    }
+
+    details {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    summary {
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    details p {
+      color: var(--muted);
+    }
+
+    .contact {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+      padding: 35px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+
+    .contact h2 {
+      font-size: 32px;
+    }
+
+    .contact p {
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .mobile-contact {
+      display: none;
+    }
+
+    @media (max-width: 950px) {
+      .navigation > .button {
+        display: none;
+      }
+
+      .packages {
+        gap: 12px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .price {
+        font-size: 35px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .logo {
+        font-size: 21px;
+      }
+
+      nav a:not(:first-child) {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 42px 0 35px;
+        gap: 28px;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+
+      .offer {
+        padding: 25px;
+      }
+
+      .discount {
+        font-size: 60px;
+      }
+
+      .benefits {
+        font-size: 14px;
+      }
+
+      section {
+        padding: 40px 0;
+      }
+
+      .packages,
+      .services,
+      .calculator,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 25px;
+      }
+
+      .description {
+        min-height: auto;
+      }
+
+      .price {
+        font-size: 43px;
+      }
+
+      .calc-options,
+      .calc-result {
+        padding: 24px;
+      }
+
+      .contact {
+        display: block;
+        padding: 25px;
+      }
+
+      .contact .button {
+        width: 100%;
+      }
+
+      .footer-content {
+        padding-bottom: 65px;
+      }
+
+      .mobile-contact {
+        display: flex;
+        position: fixed;
+        left: 20px;
+        right: 20px;
+        bottom: 12px;
+        z-index: 10;
+        box-shadow: 0 8px 30px #0008;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container navigation">
+    <a class="logo" href="#">SOSDAI<span>_SAIT</span></a>
+
+    <nav aria-label="Негизги меню">
+      <a href="#packages">Баалар</a>
+      <a href="#services">Кызматтар</a>
+      <a href="#contact">Байланыш</a>
+    </nav>
+
+    <a class="button whatsapp" href="https://wa.me/996707711211">
+      WhatsAppка жазуу
+    </a>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="hero">
+    <div>
+      <div class="label">Сайт жасоо · Кыргызстан</div>
+
+      <h1>
+        Ишиңизге сайт.<br>
+        <span>Жеткиликтүү баада.</span>
+      </h1>
+
+      <p>
+        Кызматыңызды таанытыңыз, товарларыңызды көрсөтүңүз
+        жана кардарлардан WhatsApp аркылуу заказ алыңыз.
+      </p>
+
+      <div class="actions">
+        <a href="#packages" class="button green">
+          Пакет тандоо
+        </a>
+
+        <a href="#services" class="button">
+          Өзүнчө кызматтар
+        </a>
+      </div>
+    </div>
+
+    <aside class="offer">
+      <div class="label">Баштапкы сунуш</div>
+      <div class="discount">−20%</div>
+
+      <p>
+        Үч пакетке тең базалык баадан арзандатуу.
+        Керектүү мүмкүнчүлүктөрдү тандаңыз.
+      </p>
+
+      <div class="offer-bottom">
+        <span>Сайт жасоо</span>
+        <strong>1 200 сомдон</strong>
+      </div>
+    </aside>
+  </div>
+
+  <div class="benefits">
+    <span>Телефонго ылайыктуу</span>
+    <span>WhatsApp менен байланыш</span>
+    <span>Так баа, түшүнүктүү курам</span>
+  </div>
+
+  <section id="packages">
+    <div class="label">01 / Пакеттер</div>
+    <h2>Өзүңүзгө ылайык тандаңыз</h2>
+
+    <p class="subtitle">
+      Бир жолку сайт жасоо акысы. Сүрөттөрдү,
+      товарлардын бааларын жана маалыматты сиз бересиз.
+    </p>
+
+    <div class="packages">
+
+      <article class="card">
+        <span class="badge">20% арзандатуу</span>
+        <h3>Старт</h3>
+
+        <p class="description">
+          Жеке адис жана кызмат көрсөтүү үчүн чакан сайт.
+        </p>
+
+        <div class="base">
+          Базалык баа: <s>1 500 сом</s>
+        </div>
+
+        <div class="price">1 200 <small>сом</small></div>
+        <div class="saving">300 сом үнөмдөйсүз</div>
+
+        <ul class="features">
+          <li>1 баракча, 3кө чейин бөлүм</li>
+          <li>5ке чейин сүрөт</li>
+          <li>Кыргызча же орусча — 1 тил</li>
+          <li>WhatsAppка жазуу баскычы</li>
+          <li>Instagram жана телефон шилтемеси</li>
+          <li>Телефонго ылайыктуу көрүнүш</li>
+          <li>1 айлампа оңдоо</li>
+        </ul>
+
+        <a
+          class="button package"
+          data-name="Старт"
+          data-price="1200"
+          href="https://wa.me/996707711211"
+        >
+          Стартты тандоо
+        </a>
+      </article>
+
+      <article class="card featured">
+        <span class="badge">Товар саткандарга</span>
+        <h3>Каталог</h3>
+
+        <p class="description">
+          Чакан дүкөн, тамак-аш жана онлайн сатуу үчүн.
+        </p>
+
+        <div class="base">
+          Базалык баа: <s>3 500 сом</s>
+        </div>
+
+        <div class="price">2 800 <small>сом</small></div>
+        <div class="saving">700 сом үнөмдөйсүз · −20%</div>
+
+        <ul class="features">
+          <li>1 баракча, 5ке чейин бөлүм</li>
+          <li>10го чейин товар: сүрөтү жана баасы</li>
+          <li>Ар бир товардан WhatsAppка заказ</li>
+          <li>Кыргызча же орусча — 1 тил</li>
+          <li>Дарек жана картага шилтеме</li>
+          <li>Instagram жана телефон шилтемеси</li>
+          <li>2 айлампа оңдоо</li>
+        </ul>
+
+        <a
+          class="button green package"
+          data-name="Каталог"
+          data-price="2800"
+          href="https://wa.me/996707711211"
+        >
+          Каталогду тандоо
+        </a>
+      </article>
+
+      <article class="card">
+        <span class="badge">Эки тилдүү сайт</span>
+        <h3>Бизнес</h3>
+
+        <p class="description">
+          Кеңири каталог жана кардарга ыңгайлуу тандоо.
+        </p>
+
+        <div class="base">
+          Базалык баа: <s>6 500 сом</s>
+        </div>
+
+        <div class="price">5 200 <small>сом</small></div>
+        <div class="saving">1 300 сом үнөмдөйсүз · −20%</div>
+
+        <ul class="features">
+          <li>3кө чейин баракча</li>
+          <li>30га чейин товар: сүрөтү жана баасы</li>
+          <li>Кыргызча + орусча — 2 тил</li>
+          <li>Товарларды категорияга бөлүү</li>
+          <li>Себеттен WhatsAppка заказ</li>
+          <li>Дарек, байланыш жана Instagram</li>
+          <li>3 айлампа оңдоо</li>
+        </ul>
+
+        <a
+          class="button package"
+          data-name="Бизнес"
+          data-price="5200"
+          href="https://wa.me/996707711211"
+        >
+          Бизнести тандоо
+        </a>
+      </article>
+
+    </div>
+
+    <p class="note">
+      Базалык баа — пакеттин арзандатуусуз сунушталган баасы.
+      Домен, акы төлөнүүчү хостинг, онлайн төлөм жана
+      админ-панель пакеттерге кирбейт.
+      Мөөнөт алдын ала макулдашылат.
+    </p>
+  </section>
+
+  <section id="services">
+    <div class="label">02 / Кошумча кызматтар</div>
+    <h2>Керектүүсүн гана кошуңуз</h2>
+
+    <p class="subtitle">
+      Даяр сайтка өзүнчө кошуу же пакеттин көлөмүн кеңейтүү.
+    </p>
+
+    <div class="services">
+
+      <div class="service">
+        <div>
+          WhatsApp баскычы
+          <small>Даяр сайтка кошуу. Жаңы пакеттерде бар.</small>
+        </div>
+        <strong>300 сом</strong>
+      </div>
+
+      <div class="service">
+        <div>
+          Дагы 10 товар
+          <small>Даяр сүрөттөрү, аталышы жана баасы менен.</small>
+        </div>
+        <strong>500 сом</strong>
+      </div>
+
+      <div class="service">
+        <div>
+          Экинчи тил
+          <small>Старт / Каталог үчүн. Котормону кардар берет.</small>
+        </div>
+        <strong>800 сом</strong>
+      </div>
+
+      <div class="service">
+        <div>
+          Кошумча бөлүм
+          <small>Жеткирүү, биз жөнүндө же суроо-жооп.</small>
+        </div>
+        <strong>400 сом</strong>
+      </div>
+
+      <div class="service">
+        <div>
+          5 сүрөттү жайгаштыруу
+          <small>Даяр сүрөттөрдү ылайыктап сайтка кошуу.</small>
+        </div>
+        <strong>200 сом</strong>
+      </div>
+
+      <div class="service">
+        <div>
+          Instagram жана карта шилтемеси
+          <small>Даяр сайтка эки шилтемени кошуу.</small>
+        </div>
+        <strong>300 сом</strong>
+      </div>
+
+    </div>
+
+    <div class="calculator">
+      <div class="calc-options">
+        <h3>Бааңызды эсептеңиз</h3>
+
+        <label for="plan">Негизги пакет</label>
+
+        <select id="plan">
+          <option value="1200">Старт — 1 200 сом</option>
+          <option value="2800" selected>Каталог — 2 800 сом</option>
+          <option value="5200">Бизнес — 5 200 сом</option>
+        </select>
+
+        <label class="check">
+          <input type="checkbox" id="products" value="500">
+          <span>Дагы 10 товар · +500 сом</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" id="language" value="800">
+          <span id="language-label">Экинчи тил · +800 сом</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" id="extra-section" value="400">
+          <span>Кошумча бөлүм · +400 сом</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" id="photos" value="200">
+          <span>Дагы 5 сүрөт · +200 сом</span>
+        </label>
+      </div>
+
+      <div class="calc-result">
+        <div>Жалпы баа</div>
+        <output id="total" aria-live="polite">2 800 сом</output>
+
+        <p>
+          Тандооңуз даяр билдирүү болуп WhatsAppка өтөт.
+          Жөнөтүүдөн мурун аны өзгөртө аласыз.
+        </p>
+
+        <a
+          id="order"
+          class="button green"
+          href="https://wa.me/996707711211"
+        >
+          Тандоомду WhatsAppка жөнөтүү
+        </a>
+
+        <noscript>
+          <p>
+            Эсептегич үчүн JavaScript керек.
+            Бааны WhatsApp аркылуу тактаңыз.
+          </p>
+        </noscript>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">03 / Иш тартиби</div>
+    <h2>Идеядан даяр сайтка</h2>
+
+    <div class="steps">
+      <div>
+        <div class="step-number">01</div>
+        <h3>Маалымат бересиз</h3>
+        <p>
+          Ишиңизди айтып, логотип, сүрөттөр,
+          товарлар жана байланыштарыңызды жөнөтөсүз.
+        </p>
+      </div>
+
+      <div>
+        <div class="step-number">02</div>
+        <h3>Шарттарды макулдашабыз</h3>
+        <p>
+          Пакетти, иштин көлөмүн, мөөнөтүн жана
+          төлөө тартибин алдын ала тактайбыз.
+        </p>
+      </div>
+
+      <div>
+        <div class="step-number">03</div>
+        <h3>Сайтты текшересиз</h3>
+        <p>
+          Даяр көрүнүштү карап, пакеттеги оңдоолорду
+          киргизебиз. Андан кийин сайтты жайгаштырабыз.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">Суроо-жооп</div>
+    <h2>Алдын ала билип алыңыз</h2>
+
+    <details>
+      <summary>WhatsApp баскычы үчүн өзүнчө төлөймбү?</summary>
+      <p>
+        Жок. Үч пакетте тең байланыш баскычы бар.
+        300 сом — мурда жасалган сайтка өзүнчө
+        WhatsApp баскычын кошуу баасы.
+      </p>
+    </details>
+
+    <details>
+      <summary>Сүрөт жана текст кимден болот?</summary>
+      <p>
+        Негизги сүрөттөрдү, товарлардын аталышын,
+        бааларын жана тексттерди сиз бересиз.
+        Сүрөт тартуу, логотип жасоо жана котормо
+        өзүнчө макулдашылат.
+      </p>
+    </details>
+
+    <details>
+      <summary>Товарларды кийин өзүм өзгөртө аламбы?</summary>
+      <p>
+        Бул пакеттерде админ-панель жок.
+        Өзүңүз башкарчу система керек болсо,
+        өзүнчө эсептейбиз. Сайттын кодун өткөрүп берем.
+      </p>
+    </details>
+
+    <details>
+      <summary>Ай сайын төлөм барбы?</summary>
+      <p>
+        Бул баа сайтты жасоо үчүн бир жолу төлөнөт.
+        Домен жана акы төлөнүүчү хостингдин чыгымы өзүнчө.
+        Кийинки жаңыртуулар алдын ала макулдашылат.
+      </p>
+    </details>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <div>
+        <div class="label">SOSDAI_SAIT</div>
+        <h2>Сизге кандай сайт керек?</h2>
+
+        <p>
+          Ишиңизди айтып жазыңыз.
+          Ылайыктуу пакетти чогуу тандайбыз.
+        </p>
+
+        <p>
+          <a href="tel:+996707711211">0707 711 211</a>
+          <br>
+          <a
+            href="https://www.instagram.com/sosdai_sait/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram: @sosdai_sait
+          </a>
+        </p>
+      </div>
+
+      <a
+        class="button green whatsapp"
+        href="https://wa.me/996707711211"
+      >
+        WhatsAppка жазуу
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-content">
+    <span>© <span id="year">2026</span> SOSDAI_SAIT</span>
+    <span>Сайт жасоо · Каталог · WhatsApp заказ</span>
+  </div>
+</footer>
+
+<a
+  class="button green mobile-contact whatsapp"
+  href="https://wa.me/996707711211"
+>
+  WhatsApp · 0707 711 211
+</a>
+
+<script>
+  // Байланыш номери
+  const phone = "996707711211";
+
+  function whatsappLink(message) {
+    return "https://wa.me/" + phone +
+      "?text=" + encodeURIComponent(message);
+  }
+
+  // Жалпы WhatsApp баскычтары
+  document.querySelectorAll(".whatsapp").forEach(function(link) {
+    link.href = whatsappLink(
+      "Саламатсызбы! SOSDAI_SAIT аркылуу сайт жасатуу " +
+      "боюнча маалымат алгым келет."
+    );
+  });
+
+  // Пакеттердин баскычтары
+  document.querySelectorAll(".package").forEach(function(link) {
+    link.href = whatsappLink(
+      "Саламатсызбы! «" + link.dataset.name +
+      "» пакетине кызыгам. Баасы " +
+      link.dataset.price +
+      " сом. Шарттарын сүйлөшөлү."
+    );
+  });
+
+  const plan = document.getElementById("plan");
+  const language = document.getElementById("language");
+
+  const extras = [
+    ["products", "Дагы 10 товар"],
+    ["language", "Экинчи тил"],
+    ["extra-section", "Кошумча бөлүм"],
+    ["photos", "Дагы 5 сүрөт"]
+  ];
+
+  function updatePrice() {
+    const business = plan.value === "5200";
+
+    language.disabled = business;
+
+    if (business) {
+      language.checked = false;
+    }
+
+    document.getElementById("language-label").textContent =
+      business
+        ? "Экинчи тил пакетке кирет"
+        : "Экинчи тил · +800 сом";
+
+    let total = Number(plan.value);
+    const selected = [];
+
+    extras.forEach(function(item) {
+      const checkbox = document.getElementById(item[0]);
+
+      if (checkbox.checked && !checkbox.disabled) {
+        total += Number(checkbox.value);
+
+        selected.push(
+          item[1] + " — " + checkbox.value + " сом"
+        );
+      }
+    });
+
+    const formatted = new Intl.NumberFormat("ru-RU").format(total);
+
+    document.getElementById("total").textContent =
+      formatted + " сом";
+
+    let message =
+      "Саламатсызбы! Сайт жасаткым келет.\n" +
+      "Пакет: " + plan.options[plan.selectedIndex].text;
+
+    if (selected.length) {
+      message +=
+        "\nКошумча кызматтар:\n" +
+        selected.join("\n");
+    }
+
+    message +=
+      "\nЖалпы: " + formatted + " сом." +
+      "\nИштин көлөмүн жана мөөнөтүн сүйлөшөлү.";
+
+    document.getElementById("order").href =
+      whatsappLink(message);
+  }
+
+  plan.addEventListener("change", updatePrice);
+
+  extras.forEach(function(item) {
+    document.getElementById(item[0])
+      .addEventListener("change", updatePrice);
+  });
+
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+  updatePrice();
+</script>
+
+</body>
+</html>
